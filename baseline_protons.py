@@ -16,7 +16,7 @@ from pyRadPlan.stf._beam import Beam
 from pyRadPlan.geometry import get_beam_rotation_matrix
 from pyRadPlan.machines import load_from_name, IonAccelerator
 
-from utils import DIR_IMAGE, DIR_PLAN_JSON, DIR_DOSE, BEAM_PARAMS_FILENAME, CT_NAME, plot_dose_comparison
+from utils import DIR_IMAGE, DIR_DOSE, BEAM_PARAMS_FILENAME, CT_NAME, plot_dose_comparison
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -135,7 +135,7 @@ def main(
 
     # Fixed path layout expected by the challenge dataset.
     ct_path        = baseline_pb_dir / modality / split / patient_id / DIR_IMAGE / CT_NAME
-    plan_json_path = baseline_pb_dir / modality / split / patient_id / DIR_PLAN_JSON / f"{patient_id}.json"
+    plan_json_path = baseline_pb_dir / modality / split / patient_id / f"{patient_id}.json"
     dose_dir       = baseline_pb_dir / modality / split / patient_id / DIR_DOSE
 
     ct = ct_from_file(ct_path)

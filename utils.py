@@ -10,7 +10,6 @@ from pyRadPlan import plot_slice
 # Dataset directory layout
 # ---------------------------------------------------------------------------
 DIR_IMAGE            = "image"
-DIR_PLAN_JSON        = "plan_json"
 DIR_DOSE             = "dose"
 CT_NAME              = "ct.mha"
 BEAM_PARAMS_FILENAME = "beam_parameters.json"

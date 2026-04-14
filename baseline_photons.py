@@ -13,7 +13,7 @@ from pyRadPlan.ct import ct_from_file
 from pyRadPlan.cst import StructureSet
 from pyRadPlan.machines import Jaw, MLC
 
-from utils import DIR_IMAGE, DIR_PLAN_JSON, DIR_DOSE, BEAM_PARAMS_FILENAME, CT_NAME, plot_dose_comparison
+from utils import DIR_IMAGE, DIR_DOSE, BEAM_PARAMS_FILENAME, CT_NAME, plot_dose_comparison
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -153,7 +153,7 @@ def main(
 
     # Fixed path layout expected by the challenge dataset.
     ct_path        = baseline_pb_dir / modality / split / patient_id / DIR_IMAGE / CT_NAME
-    plan_json_path = baseline_pb_dir / modality / split / patient_id / DIR_PLAN_JSON / f"{patient_id}.json"
+    plan_json_path = baseline_pb_dir / modality / split / patient_id / f"{patient_id}.json"
     dose_dir       = baseline_pb_dir / modality / split / patient_id / DIR_DOSE
 
     # General beam parameters
@@ -202,7 +202,7 @@ def main(
         output_dir.mkdir(parents=True, exist_ok=True)
 
         # construct filename
-        filename = f"{patient_id}_{modality}_{split}_PB_Dose_B{b_idx}_R{r_idx}_L{l_idx}.mha"
+        filename = f"{patient_id}_{modality}_{split}_PB_Dose_B{b_idx}_CP{c_idx:03d}.mha"
         write_path = output_dir / filename
 
         sitk.WriteImage(pb_dose, str(write_path), useCompression=True)
